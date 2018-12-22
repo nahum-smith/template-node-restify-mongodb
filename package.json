@@ -1,0 +1,22 @@
+{
+  "name": "template-node-restify-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan-winston-adapter": "^0.2.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.0",
+    "mongoose-api-query": "^0.1.1-pre",
+    "mongoose-createdmodified": "0.0.2",
+    "restify": "^7.3.0",
+    "restify-errors": "^6.1.1",
+    "winston": "^3.1.0"
+  }
+}
