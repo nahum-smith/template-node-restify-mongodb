@@ -19,6 +19,7 @@ server.post('/todos', function (req, res, next) {
   let data = req.body || {}
 
   let todo = new Todo(data)
+  log.info(todo)
   todo.save(function (err) {
 
     if (err) {
@@ -139,5 +140,13 @@ server.del('/todos/:todo_id', function (req, res, next) {
     next()
 
   })
+
+})
+/**
+ * DELETE
+ */
+server.get('/', function (req, res, next) {
+
+  res.send('Ok')
 
 })

@@ -13,7 +13,7 @@ const config = require('./config'),
 /**
  * Logging
  */
-global.log = new winston.Logger({
+global.log = winston.createLogger({
   transports: [
     new winston.transports.Console({
       level: 'info',
@@ -37,14 +37,14 @@ global.server = restify.createServer({
 /**
  * Middleware
  */
-server.use(restify.jsonBodyParser({
+server.use(restify.plugins.bodyParser({
   mapParams: true
 }))
-server.use(restify.acceptParser(server.acceptable))
-server.use(restify.queryParser({
+server.use(restify.plugins.acceptParser(server.acceptable));
+server.use(restify.plugins.queryParser({
   mapParams: true
-}))
-server.use(restify.fullResponse())
+}));
+//server.use(restify.fullResponse())
 
 /**
  * Error Handling
@@ -70,14 +70,8 @@ server.listen(config.port, function () {
       log.error('Mongoose default connection error: ' + err)
       process.exit(1)
     }
-
-    log.info(
-      '%s v%s ready to accept connections on port %s in %s environment.',
-      server.name,
-      config.version,
-      config.port,
-      config.env
-    )
+    log.info(`Database Connected`)
+    log.info(`${server.name} ${config.version} ready to accept connections on port ${config.port} in ${config.env} environment.`)
 
     require('./routes')
 
